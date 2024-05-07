@@ -2,84 +2,93 @@
   var consumptionData = [
                    {
                        "date": "2-25",
-                       "value1":12.5,
-                       "value2":0.9,
-                       "value3":9.7,
-                       "total":23.1,
+                       // "value1":1,
+                       "value1":"<img src=\"../img/logi_compan/1.png\" width= \"30\">",
+                       "value2":"<img src=\"../img/logi_compan/weilong.png\" width= \"30\">",
+                       "value3":"<img src=\"../img/logi_compan/2.png\" width= \"30\">",
+                       "value4":"<img src=\"../img/logi_compan/3.png\" width= \"30\">",
+                       "value5":"<img src=\"../img/logi_compan/4.png\" width= \"30\">",
+                       
                        "color1": "#FF6600",
                        "color2": "#04D215",
                        "color3": "#0D8ECF"
                    },
                    {
                        "date": "2-26",
-                       "value1": 14.3,
-                       "value2":0.8,
-                       "value3":9.5,
-                       "total":24.6,
+                       "value1":"8辆",
+                       "value2":"4辆",
+                       "value3":"5辆",
+                       "value4":"5辆",
+                       "value5":"8辆",
                        "color1": "#FF6600",
                        "color2": "#04D215",
                        "color3": "#0D8ECF"
                    },
                    {
                        "date": "2-27",
-                       "value1": 13.4,
-                       "value2": 0.9,
-                       "value3": 9.9,
-                       "total": 24.2,
+                       "value1": "长春→天津",
+                       "value2": "天津→北京",
+                       "value3": "上海→武汉",
+                       "value4": "北京→长春",
+                       "value5": "珠海→合肥",
                        "color1": "#FF6600",
                        "color2": "#04D215",
                        "color3": "#0D8ECF"
                    },
                    {
                        "date": "2-28",
-                       "value1": 12.8,
-                       "value2": 0.7,
-                       "value3": 9.7,
-                       "total": 23.2,
+                       "value1": "￥13,000",
+                       "value2": "￥7,000",
+                       "value3": "￥19,000",
+                       "value4": "￥10,000",
+                       "value5": "￥11,000",
                        "color1": "#FF6600",
                        "color2": "#04D215",
                        "color3": "#0D8ECF"
                    },
                    {
                        "date": "2-29",
-                       "value1":15.0,
-                       "value2": 0.8,
-                       "value3": 9.6,
-                       "total": 25.4,
+                       "value1": "<img src=\"../img/driver/siji1.png\" height= \"30\">",
+                       "value2": "<img src=\"../img/driver/siji2.png\" height= \"30\">",
+                       "value3": "<img src=\"../img/driver/siji4.png\" height= \"30\">",
+                       "value4": "<img src=\"../img/driver/siji5.png\" height= \"30\">",
+                       "value5": "<img src=\"../img/driver/siji6.png\" height= \"30\">",
                        "color1": "#FF6600",
                        "color2": "#04D215",
                        "color3": "#0D8ECF"
                    },
                    {
                        "date": "3-1",
-                       "value1": 14.1,
-                       "value2": 0.8,
-                       "value3": 10.0,
-                       "total":24.9,
+                       "value1": "￥6,000",
+                       "value2": "￥3,500",
+                       "value3": "￥11,000",
+                       "value4": "￥3,700",
+                       "value5": "￥8,900",
                        "color1": "#FF6600",
                        "color2": "#04D215",
                        "color3": "#0D8ECF"
                    },
                    {
                        "date": "3-2",
-                       "value1": 13.5,
-                       "value2":0.8,
-                       "value3":9.8,
-                       "total":24.1,
+                        "value1": "<img src=\"../img/percent/100.png\" height= \"35\">",
+                       "value2": "<img src=\"../img/percent/50.png\" height= \"35\">",
+                       "value3": "<img src=\"../img/percent/40.png\" height= \"35\">",
+                       "value4": "<img src=\"../img/percent/100.png\" height= \"35\">",
+                       "value5": "<img src=\"../img/percent/25.png\" height= \"35\">",
                        "color1": "#FF6600",
                        "color2": "#04D215",
                        "color3": "#0D8ECF"
                    },
-                   {
-                       "date": "3-3",
-                       "value1":	12.6,
-                       "value2":0.6,
-                       "value3":9.6,
-                       "total":22.8,
-                       "color1": "#FF6600",
-                       "color2": "#04D215",
-                       "color3": "#0D8ECF"
-                   }
+                   // {
+                   //     "date": "3-3",
+                   //     "value1":	12.6,
+                   //     "value2":0.6,
+                   //     "value3":9.6,
+                   //     "value4":22.8,
+                   //     "color1": "#FF6600",
+                   //     "color2": "#04D215",
+                   //     "color3": "#0D8ECF"
+                   // }
                ];
 
             AmCharts.ready(function () {
@@ -113,7 +122,7 @@
                 graph2.lineAlpha = 0;
                 graph2.fillAlphas = 1;
                 chart.addGraph(graph2);
-                
+
                 var graph3 = new AmCharts.AmGraph();
                 graph3.valueField = "value3";
                 graph3.colorField = "color3";
@@ -127,7 +136,7 @@
                 graphl.type = "line";
                 graphl.title = "总能耗";
                 graphl.lineColor = "#fcd202";
-                graphl.valueField = "total";
+                graphl.valueField = "value4";
                 graphl.lineThickness = 3;
                 graphl.bullet = "round";
                 graphl.bulletBorderThickness = 3;

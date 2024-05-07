@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
-    <head>
+<head xmlns="http://www.w3.org/1999/html">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="format-detection" content="telephone=no">
         <meta charset="UTF-8">
@@ -24,6 +24,12 @@
         <link href="css/menu.css" rel="stylesheet">
     </head>
     <body id="skin-blur-blue">
+
+            <!-- 弹窗内容 -->
+        <div id="detailDialog"  style="display:none;">
+<!--            这里可以放置你想显示的任何内容。-->
+        </div>
+
 
         <header id="header" class="media">
             <a href="https://gitee.com/iGaoWei/big-data-view" id="menu-toggle"></a>
@@ -78,7 +84,7 @@
                     </li>
                     <li>
                         <a  href="keyInfo.html"  id='menuurl'>
-                            <i class="fa fa-bar-chart-o"></i><span>    KPI  </span>
+                            <i class="fa fa-bar-chart-o"></i><span>    整车仓储管理子系统  </span>
                         </a>
                     </li>
                     <li>
@@ -93,7 +99,7 @@
                     </li>
                     <li  class="active">
                         <a href="dianfei.html"  id='menuurl'>
-                            <i class="fa  fa-money"></i><span> 电费管理</span>
+                            <i class="fa  fa-money"></i><span> 二手车托运子系统</span>
                         </a>
                     </li>
                     <li>
@@ -295,211 +301,289 @@
                
                 <div class="block-area">
                     <div class="row">
-                        <div class="col-md-12">
-                            <!-- Main Chart -->
-                            <div class="tile" style="height: 350px">
-                                <h2 class="tile-title" style="font-size: 20px">电费管理</h2>
-                                <div class="tile-config dropdown">
-                                    <a data-toggle="dropdown" href="https://gitee.com/iGaoWei/big-data-view" class="tile-menu"></a>
-                                    <ul class="dropdown-menu pull-right text-right">
-                                        <li><a class="tile-info-toggle" href="https://gitee.com/iGaoWei/big-data-view">Chart Information</a></li>
-                                        <li><a href="https://gitee.com/iGaoWei/big-data-view">Refresh</a></li>
-                                        <li><a href="https://gitee.com/iGaoWei/big-data-view">Settings</a></li>
-                                    </ul>
+                        <div class="tab-content" style="min-height: 260px;">
+
+
+                        <div id="kanban" class="tab-pane active">
+                            <div class='col-md-12'>
+                                <div class='title'>
+                                    <h2 class="tile-title" style="font-size: 20px">二手车托运订单看板</h2>
                                 </div>
-                                <div class="col-md-12" style="margin: 0px;padding: 0px">
-                                	<div class="col-md-12" style=" height: 270px;">
-                                		<div class="row " style="margin-top:15px;">
-                                            <div class='col-md-2'>
-                                                <div class='col-md-6'>
-                                                    <button class="btn btn-default pull-right">城市:</button>
-                                                </div>
-                                                <div class='col-md-6'>
-                                                    <select class="select">
-                                                        <option>西宁</option>
-                                                        <option>海东</option>
-                                                        <option>海西</option>
-                                                        <option>海南</option>
-                                                        <option>海北</option>
-                                                        <option>玉树</option>
-                                                        <option>黄南</option>
-                                                        <option>果洛</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class='col-md-2'>
-                                                <div class='col-md-4'>
-                                                    <button class="btn btn-default pull-right">类型:</button>
-                                                </div>
-                                                <div class='col-md-8'>
-                                                    <select class="select" id='sel_srctype' onselect="select_srctype()">
-                                                        <option>基站</option>
-                                                        <option>机房</option>
-                                                        <option>营业厅</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class='col-md-2'>
-                                                <div class='col-md-4'>
-                                                    <button class="btn btn-default pull-right">对象:</button>
-                                                </div>
-                                                <div class='col-md-8'>
-                                                    <select class="select">
-                                                        <option><span class='src_type'>基站</span>A</option>
-                                                        <option><span class='src_type'>基站</span>B</option>
-                                                        <option><span class='src_type'>基站</span>C</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class='col-md-4'>
-                                                <div class='col-md-3'>
-                                                    <button class="btn btn-default pull-right">时间段:</button>
-                                                </div>
-                                                <div class='col-md-4'>
-                                                    <input id='startDate' class="form-control"/>
-                                                </div>
-                                                <div class='col-md-4'>
-                                                    <input id='endDate' class="form-control" />
-                                                </div>
-                                            </div>
-										</div>
-                                    	<div id="consumptiondiv" class="col-md-12" style=" height: 250px;"></div>
-                                    </div>
-                                    <div class="col-md-3 hide">
-                                    	<label style="height: 30px"></label>
-                                    	<h3>单位面积总能耗</h3>
-                                    	<span>分时间尺度展示当前建筑单位面积总能耗。同</span>
-                                    	<span>时通过下拉时间列表自由比对历史单位面积总</span>
-                                    	<span>能耗值。</span><br>
-                                    	<div class="col-md-6">
-	                                    	<span style="font-size: 23px">0.65</span><span>kwh/(m²天)</span><br>
-	                                    	<span>本月平均单位面积总能耗</span>
-                                    	</div>
-                                    	<div class="col-md-6">
-                                    		<span style="font-size: 23px">↑10</span><span>%</span><br>
-                                    		<span>与同类建筑相比</span>
-                                    	</div>
-                                    </div>
-                                </div>
+                                <table class='table'>
+                                        <thead>
+                                            <tr>
+                                                <th>订单号</th>
+                                                <th>供应商</th>
+                                                <th>整车数量</th>
+                                                <th>起点→终点</th>
+                                                <th>供应商提供报酬</th>
+                                                <th>接单司机</th>
+                                                <th>预估成本</th>
+                                                <th>成单比例</th>
+        <!--                                        <th>2016-03-02</th>-->
+        <!--                                        <th>2016-03-03</th>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody id='tb-dianfei'>
+        <!--                                body部分在此html最下面-->
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="8" class="pagination-container">
+                                                    <div class="pagination">
+                                                        <a href="#" class="prev">|<</a>
+                                                         <a href="#" class="prev"><</a>
+                                                    </div>
+
+                                                    <div class="pagination">
+
+                                                        <a href="#" class="active">1</a>
+                                                        <a href="#">2</a>
+                                                        <a href="#">3</a>
+                                                        <a href="#">4</a>
+                                                        <a href="#">5</a>
+                                                        <a href="#">...</a>
+                                                        <a href="#">34</a>
+
+                                                    </div>
+                                                    <div class="pagination">
+                                                        <a href="#" class="prev"> > </a>
+                                                         <a href="#" class="prev"> >|</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+    <!--                                </div>-->
+                                </table>
                             </div>
                         </div>
-                        <div class='col-md-12'>
-                            <table class='table'>
-                                <thead>
-                                    <tr>
-                                        <th>类型(万kwh)</th>
-                                        <th>2016-02-25</th>
-                                        <th>2016-02-26</th>
-                                        <th>2016-02-27</th>
-                                        <th>2016-02-28</th>
-                                        <th>2016-02-29</th>
-                                        <th>2016-03-01</th>
-                                        <th>2016-03-02</th>
-                                        <th>2016-03-03</th>
-                                    </tr>
-                                </thead>
-                                <tbody id='tb-dianfei'>
 
-                                </tbody>
-                            </table>
+                        <div id="chaxun" class="tab-pane">
+                            <div class='col-md-12'>
+                                <div class='title'>
+                                    <h2 class="tile-title" style="font-size: 20px">二手车托运订单看板</h2>
+                                </div>
+                                <table class='table'>
+                                    <thead>
+                                        <tr>
+                                            <th>订单号</th>
+                                            <th>供应商</th>
+                                            <th>整车数量</th>
+                                            <th>起点→终点</th>
+                                            <th>供应商提供报酬</th>
+                                            <th>接单司机</th>
+                                            <th>预估成本</th>
+                                            <th>成单比例</th>
+                                            <th></th>
+    <!--                                        <th>2016-03-02</th>-->
+    <!--                                        <th>2016-03-03</th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody id='tb-dianfei1'>
+
+    <!--                                body部分在此html最下面-->
+                                    </tbody>
+
+<!--                                    <tfoot>-->
+<!--                                        <td colspan="8" >-->
+<!--                                        <h4>查看详情</h4>-->
+<!--                                        </td>-->
+<!--                                    </tfoot>-->
+
+
+                                </table>
+                            </div>
+
                         </div>
 					</div>
+                    </div>
                     
 					<div class="clearfix"></div>
                 </div>
+
+
+
+
+
+
+
+
+
                 <div class='block-area'>
                     <div class='row'>
                         <div class='col-md-12'>
                             <div class='title'>
-                                <h2 class="tile-title" style="font-size: 20px">电费录入</h2>
+                                <h2 class="tile-title" style="font-size: 20px">二手车托运订单查询</h2>
                             </div>
                         </div>
                     </div>
                     <form class="row form-columned" role="form">
                         <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="局站名称">
+                            <select class="form-control input-sm m-b-10" >
+                                <option value="">订单编号</option>
+                                <option value="station1">TJU66</option>
+                                <option value="station2">TJU67</option>
+                                <option value="station3">TJU68</option>
+                                <option value="station3">TJU69</option>
+                                <option value="station3">TJU70</option>
+                                <option value="station3">TJU71</option>
+                                <option value="station3">TJU72</option>
+                                <option value="station3">TJU73</option>
+                                <option value="station3">TJU74</option>
+                                <option value="station3">TJU75</option>
+                                <option value="station3">TJU76</option>
+                                <!-- 添加更多局站选项 -->
+                            </select>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <input id="endDate" type="text"
+                                   class="form-control input-sm m-b-10" placeholder="日期选择">
                         </div>
                         <div class="col-md-4">
-                            <input id="ipt-dfdate" type="text" class="form-control input-sm m-b-10" placeholder="月份选择">
+                            <select class="form-control input-sm m-b-10" >
+                                <option value="">供应商</option>
+                                <option value="station1">TJU</option>
+                                <option value="station2">七里台物流</option>
+                                <option value="station3">AJWL</option>
+                                <option value="station3">RRS</option>
+                                <option value="station3">ANWL</option>
+                                <option value="station3">JDWL</option>
+                                <option value="station3">DBWL</option>
+                                <option value="station3">FedWL</option>
+                                <option value="station3">ZTWL</option>
+                                <option value="station3">HCBD</option>
+                                <option value="station3">MHPY</option>
+                                <!-- 添加更多局站选项 -->
+                            </select>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="电费单价（元）">
+                            <select class="form-control input-sm m-b-10" >
+                                <option value="">起点</option>
+                                <option value="station1">长春</option>
+                                <option value="station2">天津</option>
+                                <option value="station3">北京</option>
+                                <option value="station3">上海</option>
+                                <option value="station3">广州</option>
+                                <option value="station3">深圳</option>
+                                <option value="station3">武汉</option>
+                                <option value="station3">珠海</option>
+                                <option value="station3">南京</option>
+                                <option value="station3">厦门</option>
+                                <option value="station3">合肥</option>
+                                <!-- 添加更多局站选项 -->
+                            </select>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="上次抄表日期">
+                            <select class="form-control input-sm m-b-10" >
+                                <option value="">终点</option>
+                                <option value="station1">长春</option>
+                                <option value="station2">天津</option>
+                                <option value="station3">北京</option>
+                                <option value="station3">上海</option>
+                                <option value="station3">广州</option>
+                                <option value="station3">深圳</option>
+                                <option value="station3">武汉</option>
+                                <option value="station3">珠海</option>
+                                <option value="station3">南京</option>
+                                <option value="station3">厦门</option>
+                                <option value="station3">合肥</option>
+                                <!-- 添加更多局站选项 -->
+                            </select>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="本次抄表日期">
+                            <select class="form-control input-sm m-b-10" >
+                                <option value="">接单司机</option>
+                                <option value="station1">Sun</option>
+                                <option value="station2">Rao</option>
+                                <option value="station3">Ouyang</option>
+                                <option value="station3">Luo</option>
+                                <option value="station3">Wang</option>
+                                <option value="station3">Ding</option>
+                                <option value="station3">Li</option>
+                                <option value="station3">Zhang</option>
+                                <option value="station3">Meng</option>
+                                <option value="station3">Chen</option>
+                                <option value="station3">Cheng</option>
+                                <!-- 添加更多局站选项 -->
+                            </select>
                         </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="线损">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="变损">
-                        </div>
-                        <div class='col-md-12 '>
-                            <div class='col-md-12 block-title'>录入电费合同/局站下的电表表码</div>
-                        </div>
-                        <div class='col-md-12'>
-                            <table class='table'>
-                                <thead>
-                                    <tr>
-                                        <th>表名</th>
-                                        <th>倍率</th>
-                                        <th>上个月表码</th>
-                                        <th>本月表码</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="text" class="form-control input-sm m-b-10" value="电表1"></td>
-                                        <td><input type="text" class="form-control input-sm m-b-10" value="1"></td>
-                                        <td><input type="text" class="form-control input-sm m-b-10" value="0"></td>
-                                        <td><input type="text" class="form-control input-sm m-b-10" value="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="text" class="form-control input-sm m-b-10" value="电表2"></td>
-                                        <td><input type="text" class="form-control input-sm m-b-10" value="1"></td>
-                                        <td><input type="text" class="form-control input-sm m-b-10" value="0"></td>
-                                        <td><input type="text" class="form-control input-sm m-b-10" value="0"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="本月电量">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="本月电费">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="智能电表读数">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="支付方式">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="票据类型">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="其他费用">
-                        </div>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control input-sm m-b-10" placeholder="备注">
-                        </div>
-                        <div class="col-md-12">
-                            <textarea class="form-control m-b-10" readonly>操作提示：
-1.添加的时候，本月电费本月电量留空或输入0，则系统来计算；若手工输入，则以手工输入为准
-2. 人工输入的时候，一定要输入电费和电量两个值</textarea>
-                        </div>
+
+<!--                        <div class='col-md-12 '>-->
+<!--                            <div class='col-md-12 block-title'>录入电费合同/局站下的电表表码</div>-->
+<!--                        </div>-->
+<!--                        <div class='col-md-12'>-->
+<!--                            <table class='table'>-->
+<!--                                <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>表名</th>-->
+<!--                                        <th>倍率</th>-->
+<!--                                        <th>上个月表码</th>-->
+<!--                                        <th>本月表码</th>-->
+<!--                                    </tr>-->
+<!--                                </thead>-->
+<!--                                <tbody>-->
+<!--                                    <tr>-->
+<!--                                        <td><input type="text" class="form-control input-sm m-b-10" value="电表1"></td>-->
+<!--                                        <td><input type="text" class="form-control input-sm m-b-10" value="1"></td>-->
+<!--                                        <td><input type="text" class="form-control input-sm m-b-10" value="0"></td>-->
+<!--                                        <td><input type="text" class="form-control input-sm m-b-10" value="0"></td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td><input type="text" class="form-control input-sm m-b-10" value="电表2"></td>-->
+<!--                                        <td><input type="text" class="form-control input-sm m-b-10" value="1"></td>-->
+<!--                                        <td><input type="text" class="form-control input-sm m-b-10" value="0"></td>-->
+<!--                                        <td><input type="text" class="form-control input-sm m-b-10" value="0"></td>-->
+<!--                                    </tr>-->
+<!--                                </tbody>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <input type="text" class="form-control input-sm m-b-10" placeholder="本月电量">-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <input type="text" class="form-control input-sm m-b-10" placeholder="本月电费">-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <input type="text" class="form-control input-sm m-b-10" placeholder="智能电表读数">-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <input type="text" class="form-control input-sm m-b-10" placeholder="支付方式">-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <input type="text" class="form-control input-sm m-b-10" placeholder="票据类型">-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <input type="text" class="form-control input-sm m-b-10" placeholder="其他费用">-->
+<!--                        </div>-->
+<!--                        <div class="col-md-12">-->
+<!--                            <input type="text" class="form-control input-sm m-b-10" placeholder="备注">-->
+<!--                        </div>-->
+
+<!--                        这里有个滑动块的文字模板-->
+<!--                        <div class="col-md-12">-->
+<!--                            <textarea class="form-control m-b-10" readonly>操作提示：-->
+<!--1.添加的时候，本月电费本月电量留空或输入0，则系统来计算；若手工输入，则以手工输入为准-->
+<!--2. 人工输入的时候，一定要输入电费和电量两个值</textarea>-->
+<!--                        </div>-->
                         <div class="col-md-10">
-                            <button type="submit" class="btn btn-default">录入</button>
-                            <button type="submit" class="btn btn-default">取消</button>
+<!--                             <form action="../WEB/index.html">-->
+                            <a data-toggle="tab"  href="#chaxun">
+                                <button type="submit" class="btn btn-default" onclick=jhjTabClick()>确认</button>
+                            </a>
                         </div>
+<!--                             </form>-->
+                            <button type="submit" class="btn btn-default" onclick="window.history.back();">取消</button>
+<!--                        </div>-->
                     </form>
                     <div class='row' style='height:20px;'></div>
+
                 </div>
             </section>
+
+
 
             <!-- Older IE Message -->
             <!--[if lt IE 9]>
@@ -582,7 +666,24 @@
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
         <script src="js/dianfei.js"></script>
+
+        <script>
+            function confirmAction() {
+                // 执行确认操作的逻辑
+                // 可以在这里添加任何你想要的 JavaScript 操作
+
+                // 例如，页面跳转到 index.html
+                window.location.href = "index.html";
+            }
+        </script>
+
         <script type="text/javascript">
+
+
+
+
+
+
         $(document).ready(function() {
     		$("#startDate").datetimepicker({lang:'en',endDate:"Today",
     			format:'Y-m-d',
@@ -596,25 +697,41 @@
                 format:'Y-m',
                 datepicker:true,
                 timepicker:false});
-            $("#startDate").val("2016-02-25");
-            $("#endDate").val("2016-03-03");
+            $("#startDate").val("2024-05-25");
+            $("#endDate").val("");
             $("#ipt-dfdate").val("");
-            var tr1 = "<tr><td>主设备能耗</td>";
-            var tr2 = "<tr><td>照明能耗</td>";
-            var tr3 = "<tr><td>空调能耗</td>";
-            var tr4 = "<tr><td>总能耗</td>";
+            var tr1 = "<tr><td>TJU66</td>";
+            var tr2 = "<tr><td>TJU67</td>";
+            var tr3 = "<tr><td>TJU68</td>";
+            var tr4 = "<tr><td>TJU69</td>";
+            var tr5 = "<tr><td>TJU70</td>";
             for(var i=0;i<consumptionData.length;i++){
                 var d = consumptionData[i];
                 tr1+="<td>"+d.value1+"</td>";
                 tr2+="<td>"+d.value2+"</td>";
                 tr3+="<td>"+d.value3+"</td>";
-                tr4+="<td>"+d.total+"</td>";
+                tr4+="<td>"+d.value4+"</td>";
+                tr5+="<td>"+d.value5+"</td>";
             }
+            $("#tb-dianfei1").html(tr1 +"<td>"+
+                "<h4 class='details-link'>查看详情</h4>"+"</td>" + "</tr>");
             tr1+= "</tr>";
             tr2+= "</tr>";
             tr3+= "</tr>";
             tr4+= "</tr>";
-            $("#tb-dianfei").html(tr1+tr2+tr3+tr4);
+            tr5+= "</tr>";
+            $("#tb-dianfei").html(tr1+tr2+tr3+tr4+tr5);
+
+            // 绑定点击事件到查看详情
+            $('.details-link').click(function() {
+                $("#detailDialog").dialog({
+                    modal: true, // 如果需要模态弹窗
+                    width: 785, // 定义宽度
+                    height: 660, // 定义高度
+                    text:"aaa"
+                });
+            });
+
 		});
         </script>
         
