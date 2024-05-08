@@ -720,6 +720,17 @@ body{
 		border: none;
 		padding: 15px 25px 15px 15px;
 	}
+	#myMap11{
+		height: 360px;
+	}
+	#myMap11 .amap-info-content{
+		background: #00deff;
+		border-radius: 8px;
+		box-shadow: none;
+		border: none;
+		padding: 15px 25px 15px 15px;
+	}
+
 	#myChart1{
 		height: 188px;
 	}
