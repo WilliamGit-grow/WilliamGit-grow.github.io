@@ -1251,6 +1251,8 @@ body{
 .infoBox{
 	height: 100%;
 	display: none;
+	background: image("img/board.png");
+	/*background-repeat: no-repeat;*/
 }
 .infoBox .infoTop{
 	height: 15.4%;

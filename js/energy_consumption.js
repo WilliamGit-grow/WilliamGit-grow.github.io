@@ -56,7 +56,7 @@ function showSerialChart(chartDiv) {
 	    "position": "left",
 		"autoGridCount":false,
 	    "gridCount":3,
-	    "title":"总能耗(kgce)"
+	    // "title":"总能耗(kgce)"
 	  } ],
 	  "gridAboveGraphs": true,
 	  "startDuration": 0, //second
@@ -98,7 +98,7 @@ function showPieChart(chartDiv) {
 	  "legend":{
 	   	"position":"right",
 	    "autoMargins":true,
-	    "valueText":"[[value]]kgce",//gkq:debug
+	    "valueText":"[[value]]%",//gkq:debug
 	  },
 	  "minRadius":80,
 	  "innerRadius": "40%",
@@ -220,23 +220,23 @@ var DataSet={
 	    "value": 100+Math.round(Math.random()*20)
 	  } ],
 	  pieData:[{ //pie Data
-	    "item": "总用电",
+	    "item": "整车订单",
 	    "value": 60
 	  }, {
-	    "item": "总用水",
+	    "item": "零部件订单",
 	    "value": 20
 	  }, {
-	    "item": "总用气",
+	    "item": "第三方订单",
 	    "value": 15
 	  }, {
 	    "item": "其他",
 	    "value": 5
 	  }],
 	  titleData:[
-	  	{"title":"建筑总能耗","subTitle":"含建筑总耗能、总用电、总用水、总用气等数据。"},
-	  	{"title":"建筑总用电","subTitle":"含建筑总耗能、总用电、总用水、总用气等数据。"},
-	  	{"title":"空调系统用电","subTitle":"含建筑总耗能、总用电、总用水、总用气等数据。"},
-	  	{"title":"建筑空间用电","subTitle":"含建筑总耗能、总用电、总用水、总用气等数据。"},
-	  	{"title":"建筑碳排放量","subTitle":"含建筑总耗能、总用电、总用水、总用气等数据。"},
+	  	{"title":"订单追踪","subTitle":"含订单状态、订单金额等数据"},
+	  	{"title":"运输计划","subTitle":"含运输订单、运输状态等数据"},
+	  	{"title":"订单管理","subTitle":"含订单生成、处理、撤销等数据"},
+	  	{"title":"回单管理","subTitle":"含回单生成、处理、撤销等数据"},
+	  	{"title":"年度报表","subTitle":"包含年度所有报表数据"},
 	  ]
 };

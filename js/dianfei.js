@@ -134,7 +134,7 @@
                 // line
                 var graphl = new AmCharts.AmGraph();
                 graphl.type = "line";
-                graphl.title = "总能耗";
+                // graphl.title = "总能耗";
                 graphl.lineColor = "#fcd202";
                 graphl.valueField = "value4";
                 graphl.lineThickness = 3;

@@ -8,6 +8,13 @@ div.myTitle{
 	text-align: center;
 	padding-top: 12px;
 	padding-bottom: 6px;
+	/*left: 10px;*/
+}
+div.myBody{
+	text-align: left;
+	padding-top: 12px;
+	padding-bottom: 6px;
+	/*left: 10px;*/
 }
 #device_type{
 	margin-top: 15px;
